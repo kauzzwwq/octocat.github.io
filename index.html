@@ -14,7 +14,7 @@ body{margin:0;font-family:'Montserrat',sans-serif;background:#111;color:#fff;ove
 .logo img{height:120px}
 .menu a{margin-left:30px;color:#fff;text-decoration:none;cursor:pointer}
 
-.hero{display:flex;justify-content:space-around;align-items:center;height:100vh;background:orange;transition:.5s;position:relative;padding:0 80px}
+.hero{display:flex;justify-content:space-around;align-items:center;min-height:100vh;background:orange;transition:.5s;position:relative;padding:0 80px;gap:40px}
 .bg-text{position:absolute;font-size:200px;font-family:'Oswald';opacity:.07;top:20%;right:5%}
 
 .texto{max-width:520px}
@@ -34,22 +34,22 @@ body{margin:0;font-family:'Montserrat',sans-serif;background:#111;color:#fff;ove
 }
 .botao-comprar:hover{transform:scale(1.08)}
 
-.hero img{width:520px;cursor:pointer;transition:.5s}
+.hero img{width:520px;max-width:100%;cursor:pointer;transition:.5s}
 .hero img:hover{transform:scale(1.08) rotate(-3deg)}
 
 .produtos{padding:120px 60px;text-align:center;background:linear-gradient(180deg,#111,#000)}
 .produtos h2{font-family:'Oswald';font-size:50px;margin-bottom:70px}
-.cards{display:flex;justify-content:center;gap:60px}
+.cards{display:flex;justify-content:center;gap:60px;flex-wrap:wrap}
 .card{background:#1c1c1c;padding:30px;border-radius:20px;cursor:pointer;width:220px;transition:.4s}
 .card:hover{transform:translateY(-15px) scale(1.1)}
-.card img{width:180px;transition:.4s}
+.card img{width:180px;max-width:100%;transition:.4s}
 .card img:hover{transform:scale(1.1)}
 .preco{font-weight:600;margin-top:10px}
 
-.overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);display:none;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:40px;z-index:999;animation:fade .4s}
+.overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);display:none;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:20px;z-index:999;animation:fade .4s}
 @keyframes fade{from{opacity:0}to{opacity:1}}
 
-.overlay img{width:600px;margin-bottom:20px;animation:zoom .4s}
+.overlay img{width:600px;max-width:90%;margin-bottom:20px;animation:zoom .4s}
 @keyframes zoom{from{transform:scale(.6)}to{transform:scale(1)}}
 
 .overlay h1{font-family:'Oswald';font-size:70px;margin:10px}
@@ -58,6 +58,27 @@ body{margin:0;font-family:'Montserrat',sans-serif;background:#111;color:#fff;ove
 .fechar{position:absolute;top:25px;right:30px;font-size:28px;cursor:pointer;background:white;color:black;width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:50%;font-weight:bold}
 
 .info{margin-top:20px;opacity:.8}
+
+/* RESPONSIVO */
+@media (max-width: 900px){
+ .barra-topo{padding:15px 30px}
+ .hero{flex-direction:column;text-align:center;padding:40px 20px}
+ .bg-text{font-size:120px;top:10%;right:0}
+ .texto h1{font-size:50px;line-height:55px}
+ .hero img{width:320px}
+ .produtos{padding:80px 20px}
+}
+
+@media (max-width: 600px){
+ .logo img{height:80px}
+ .menu{display:flex;flex-direction:column;gap:10px}
+ .menu a{margin:0}
+ .texto h1{font-size:38px}
+ .texto p{font-size:16px}
+ .bg-text{font-size:80px}
+ .overlay h1{font-size:40px}
+ .overlay p{font-size:16px}
+}
 
 </style>
 </head>
@@ -79,9 +100,7 @@ body{margin:0;font-family:'Montserrat',sans-serif;background:#111;color:#fff;ove
  
  <div class="texto">
   <h1 id="titulo">Fanta Laranja</h1>
-  <p id="desc">
-   A Fanta Laranja é uma bebida refrescante e cheia de sabor.
-  </p>
+  <p id="desc">A Fanta Laranja é uma bebida refrescante e cheia de sabor.</p>
   <button class="botao-comprar" onclick="comprar()">Comprar agora</button>
  </div>
 
@@ -138,9 +157,6 @@ function trocar(tipo){
  let img=document.getElementById('img')
  let bg=document.getElementById('bg')
  let imgGrande=document.getElementById('imgGrande')
- let tituloGrande=document.getElementById('tituloGrande')
- let descGrande=document.getElementById('descGrande')
- let info=document.getElementById('infoExtra')
 
  if(tipo==='laranja'){
   hero.style.background='orange'
@@ -177,9 +193,7 @@ function abrir(){document.getElementById('overlay').style.display='flex'}
 function fechar(){document.getElementById('overlay').style.display='none'}
 function fecharFora(event){if(event.target.id==='overlay'){fechar()}}
 
-function comprar(){
- alert('FORA DE ESTOQUE')
-}
+function comprar(){ alert('FORA DE ESTOQUE') }
 </script>
 
 </body>
